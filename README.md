@@ -111,6 +111,62 @@ Question: exit
 
 ---
 
+以下は、あなたのリクエストに基づいて更新された `README.md` の **Usage セクションの追加例** です。Instana（via Traceloop SDK）へトレース送信する設定を含みます。
+
+---
+
+### 🧪 Advanced Usage: Exporting Traces to Instana via Traceloop
+
+This project supports exporting agent trace data to Instana for full observability using [Traceloop SDK](https://github.com/traceloop/openllmetry).
+
+#### ✅ Step-by-step
+
+```bash
+pip install traceloop-sdk
+```
+
+Then, set the required environment variables to enable Traceloop → Instana OTLP trace export:
+
+```bash
+export TRACELOOP_BASE_URL="https://otlp-XXXX-saas.instana.io:443"
+export TRACELOOP_HEADERS="x-instana-key=XXXXXXXXXXXXXXX"
+export OTEL_EXPORTER_OTLP_INSECURE=false
+```
+
+#### ▶️ Run with Tracing Enabled
+
+```bash
+python HomeWorkAssistant_Traceloop.py
+```
+
+Upon startup, you should see confirmation like:
+
+```
+Traceloop exporting traces to https://otlp-XXXX-saas.instana.io:443, authenticating with custom headers
+```
+
+#### 💬 Example Interaction
+
+```text
+教えてほしい質問を入力してください (「exit」で終了)
+
+Question: ゆうかさんのクラスの生徒の人数は２５人です。そのうち自転車で通学している生徒の人数はx人です。残りの生徒の人数をy人とするとき，xとyの関係を式に表しなさい。
+Answer: ゆうかさんのクラスの生徒は全部で25人です。その中で、自転車で通学している生徒がx人、残りの生徒がy人とします。
+
+自転車で通学している生徒と残りの生徒を合わせると、クラス全体の人数になります。つまり、
+
+\[ x + y = 25 \]
+
+これが、xとyの関係を表す式です。
+
+（以下略）
+
+Question: exit
+終了します。
+```
+
+---
+
 ## 📄 License
 This project is provided for educational and prototyping purposes. No license is enforced.
 Homework idea comes from the below note:
